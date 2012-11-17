@@ -1,0 +1,54 @@
+<div class="page-header">
+  <h1>All Products</h1>
+</div>
+
+<!--<% @products.each do |product| %>
+    <div class="product">
+      <strong><%= product.designer %> </strong>
+      <p><%= product.category %></p>
+      <p><%= product.name %></p>
+      <p><%= product.description %></p>
+      <p><%= product.price %> </p>
+    </div>
+
+<% end %>  -->
+
+
+<table>
+  <tr>
+    <th>Designer</th>
+    <th>Category</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @products.each do |product| %>
+  <tr>
+    <td><%= product.designer %></td>
+    <td><%= product.category %></td>
+    <td><%= product.name %></td>
+    <td><%= product.description %></td>
+    <td><%= product.price %></td>
+    <td><%= link_to 'Show', product %></td>
+    <td><%= link_to 'Edit', edit_product_path(product) %></td>
+    <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= form_tag products_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search_query,
+                         params[:search_query] %>
+      <%= submit_tag "Search", :name => nil %>
+      <%= select_tag :search_by, options_for_select([['Name', 'name'], ['Category', 'category'], ['Designer', 'designer']], 'name') %>
+    </p>
+<% end %>
+
+<br />
+
+<%= link_to 'New Product', new_product_path %>

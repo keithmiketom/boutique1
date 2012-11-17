@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Boutique1</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a href="#" class="brand">Swanfield <br /> Boutique</a>
+           <ul class="nav">
+             <li> <%= link_to "All Products", products_path %></li>
+             <li> <%= link_to "New Products", new_product_path %></li>
+           </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+        <%= yield %>
+     </div>
+</body>
+</html>
